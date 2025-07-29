@@ -1,0 +1,74 @@
+{
+  "webhook_config": {
+    "url": "https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer YOUR_API_KEY"
+    }
+  },
+  "request_structure": {
+    "prompt": "{{スプレッドシート_プロンプト}}",
+    "aspect_ratio": "{{スプレッドシート_アスペクト比}}",
+    "style": "{{スプレッドシート_スタイル}}",
+    "quality": "{{スプレッドシート_品質設定}}",
+    "variations": "{{スプレッドシート_バリエーション数}}",
+    "seed": "{{スプレッドシート_シード値}}",
+    "priority": "{{スプレッドシート_優先度}}",
+    "category": "{{スプレッドシート_カテゴリ}}",
+    "brand_guidelines": {
+      "colors": ["#1E40AF", "#FFFFFF", "#F3F4F6"],
+      "style_preference": "professional",
+      "brand_elements": ["logo", "typography"]
+    },
+    "output_settings": {
+      "formats": ["PNG", "JPG"],
+      "sizes": {
+        "instagram_post": "1080x1080",
+        "instagram_story": "1080x1920",
+        "twitter_post": "1200x675",
+        "facebook_post": "1200x630"
+      }
+    }
+  },
+  "filter_conditions": {
+    "status": "承認済み",
+    "priority": ["高", "中"],
+    "category": "NOT_EMPTY",
+    "budget_limit": {
+      "high": 100,
+      "medium": 50,
+      "low": 20
+    }
+  },
+  "response_mapping": {
+    "success": {
+      "status": "completed",
+      "image_url": "{{response.imageUrl}}",
+      "processing_time": "{{response.processingTime}}",
+      "quality_score": "{{response.qualityScore}}"
+    },
+    "error": {
+      "status": "failed",
+      "error_message": "{{response.error}}",
+      "retry_count": "{{response.retryCount}}"
+    }
+  },
+  "automation_rules": [
+    {
+      "condition": "priority == 'high'",
+      "action": "use_midjourney_api",
+      "max_processing_time": 300
+    },
+    {
+      "condition": "priority == 'medium' && category == 'simple'",
+      "action": "use_stable_diffusion",
+      "max_processing_time": 180
+    },
+    {
+      "condition": "budget == 'economy'",
+      "action": "use_dalle3",
+      "max_processing_time": 120
+    }
+  ]
+}
