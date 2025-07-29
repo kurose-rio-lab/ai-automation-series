@@ -16,5 +16,5 @@
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=kurose-rio-lab&show_icons=true)
 
 ### 🔗 Links
-- YouTube: [黒瀬理央のAI研究室](チャンネルURL)
-- Twitter: [@kurose_rio](TwitterURL)
+- YouTube: [黒瀬理央のAI研究室](https://www.youtube.com/@kurose-ri-ai)
+- Twitter: [@kurose_rio](https://x.com/Rio_AI_Lab)
