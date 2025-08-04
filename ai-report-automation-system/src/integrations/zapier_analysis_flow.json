@@ -1,0 +1,180 @@
+{
+  "name": "AI自動レポート分析フロー",
+  "description": "Google SheetsのデータをChatGPTで分析し、結果を自動保存",
+  "triggers": [
+    {
+      "id": "trigger_001",
+      "app": "google-sheets",
+      "event": "new-or-updated-spreadsheet-row",
+      "config": {
+        "spreadsheet_id": "{{SPREADSHEET_ID}}",
+        "worksheet": "分析結果",
+        "trigger_column": "最終更新日"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "action_001",
+      "app": "filter",
+      "event": "only-continue-if",
+      "config": {
+        "conditions": [
+          {
+            "field": "{{trigger.最終更新日}}",
+            "operator": "exists"
+          },
+          {
+            "field": "{{trigger.分析ステータス}}",
+            "operator": "text_does_not_contain",
+            "value": "完了"
+          }
+        ]
+      }
+    },
+    {
+      "id": "action_002",
+      "app": "google-sheets",
+      "event": "lookup-spreadsheet-row",
+      "config": {
+        "spreadsheet_id": "{{SPREADSHEET_ID}}",
+        "worksheet": "売上データ",
+        "lookup_column": "日付",
+        "lookup_value": "{{trigger.対象月}}"
+      }
+    },
+    {
+      "id": "action_003",
+      "app": "google-sheets", 
+      "event": "lookup-spreadsheet-row",
+      "config": {
+        "spreadsheet_id": "{{SPREADSHEET_ID}}",
+        "worksheet": "顧客データ",
+        "lookup_column": "登録月",
+        "lookup_value": "{{trigger.対象月}}"
+      }
+    },
+    {
+      "id": "action_004",
+      "app": "google-sheets",
+      "event": "lookup-spreadsheet-row", 
+      "config": {
+        "spreadsheet_id": "{{SPREADSHEET_ID}}",
+        "worksheet": "マーケティングデータ",
+        "lookup_column": "キャンペーン月",
+        "lookup_value": "{{trigger.対象月}}"
+      }
+    },
+    {
+      "id": "action_005",
+      "app": "formatter",
+      "event": "text",
+      "config": {
+        "type": "default",
+        "transform": "trim",
+        "input": "分析対象期間: {{trigger.対象月}}\n\n【売上データ】\n売上合計: {{action_002.売上合計}}\n前月比: {{action_002.前月比}}\n主要商品: {{action_002.主要商品}}\n\n【顧客データ】\n新規顧客数: {{action_003.新規顧客数}}\n解約率: {{action_003.解約率}}\n顧客満足度: {{action_003.顧客満足度}}\n\n【マーケティングデータ】\nCPA: {{action_004.CPA}}\nCVR: {{action_004.CVR}}\nROAS: {{action_004.ROAS}}"
+      }
+    },
+    {
+      "id": "action_006",
+      "app": "openai",
+      "event": "send-prompt",
+      "config": {
+        "model": "gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "あなたは経験豊富なビジネスアナリストです。提供されたデータを分析し、経営陣向けの洞察とアクションプランを提供してください。\n\n出力形式:\n{\n  \"executive_summary\": \"エグゼクティブサマリー\",\n  \"key_insights\": [\"洞察1\", \"洞察2\", \"洞察3\"],\n  \"trend_analysis\": {\n    \"sales_trend\": \"売上トレンド分析\",\n    \"customer_trend\": \"顧客トレンド分析\",\n    \"marketing_trend\": \"マーケティングトレンド分析\"\n  },\n  \"recommendations\": [\"推奨アクション1\", \"推奨アクション2\"],\n  \"risk_factors\": [\"リスク要因1\", \"リスク要因2\"],\n  \"next_month_forecast\": \"来月の予測\"\n}"
+          },
+          {
+            "role": "user", 
+            "content": "{{action_005.output}}"
+          }
+        ],
+        "max_tokens": 2000,
+        "temperature": 0.3
+      }
+    },
+    {
+      "id": "action_007",
+      "app": "formatter",
+      "event": "text",
+      "config": {
+        "type": "extract",
+        "input": "{{action_006.choices.0.message.content}}",
+        "extract_between": ["{", "}"]
+      }
+    },
+    {
+      "id": "action_008",
+      "app": "code",
+      "event": "run-javascript",
+      "config": {
+        "code": "const analysisResult = JSON.parse(inputData.formatted_text);\n\nconst output = {\n  executive_summary: analysisResult.executive_summary || '',\n  key_insights: Array.isArray(analysisResult.key_insights) ? analysisResult.key_insights.join('\\n') : '',\n  sales_trend: analysisResult.trend_analysis?.sales_trend || '',\n  customer_trend: analysisResult.trend_analysis?.customer_trend || '',\n  marketing_trend: analysisResult.trend_analysis?.marketing_trend || '',\n  recommendations: Array.isArray(analysisResult.recommendations) ? analysisResult.recommendations.join('\\n') : '',\n  risk_factors: Array.isArray(analysisResult.risk_factors) ? analysisResult.risk_factors.join('\\n') : '',\n  forecast: analysisResult.next_month_forecast || '',\n  analysis_date: new Date().toISOString(),\n  analysis_status: '完了'\n};\n\nreturn output;"
+      }
+    },
+    {
+      "id": "action_009",
+      "app": "google-sheets",
+      "event": "update-spreadsheet-row",
+      "config": {
+        "spreadsheet_id": "{{SPREADSHEET_ID}}",
+        "worksheet": "分析結果",
+        "row": "{{trigger.row}}",
+        "values": {
+          "エグゼクティブサマリー": "{{action_008.executive_summary}}",
+          "主要洞察": "{{action_008.key_insights}}",
+          "売上トレンド": "{{action_008.sales_trend}}",
+          "顧客トレンド": "{{action_008.customer_trend}}",
+          "マーケティングトレンド": "{{action_008.marketing_trend}}",
+          "推奨アクション": "{{action_008.recommendations}}",
+          "リスク要因": "{{action_008.risk_factors}}",
+          "来月予測": "{{action_008.forecast}}",
+          "分析日時": "{{action_008.analysis_date}}",
+          "分析ステータス": "{{action_008.analysis_status}}"
+        }
+      }
+    },
+    {
+      "id": "action_010",
+      "app": "webhook",
+      "event": "post",
+      "config": {
+        "url": "{{NOTIFICATION_WEBHOOK_URL}}",
+        "payload": {
+          "message": "レポート分析が完了しました",
+          "analysis_id": "{{trigger.row}}",
+          "completion_time": "{{action_008.analysis_date}}",
+          "summary": "{{action_008.executive_summary}}"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ],
+  "error_handling": [
+    {
+      "condition": "api_error",
+      "action": {
+        "app": "google-sheets",
+        "event": "update-spreadsheet-row",
+        "config": {
+          "spreadsheet_id": "{{SPREADSHEET_ID}}",
+          "worksheet": "分析結果",
+          "row": "{{trigger.row}}",
+          "values": {
+            "分析ステータス": "エラー",
+            "エラー内容": "{{error.message}}"
+          }
+        }
+      }
+    }
+  ],
+  "settings": {
+    "max_executions_per_minute": 5,
+    "timeout_minutes": 10,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 30
+  }
+}
