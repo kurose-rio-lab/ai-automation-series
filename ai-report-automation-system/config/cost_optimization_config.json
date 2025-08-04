@@ -1,0 +1,492 @@
+{
+  "cost_optimization": {
+    "description": "AI自動レポート生成システムのコスト最適化設定",
+    "last_updated": "2024-01-01",
+    "target_monthly_cost": 150,
+    "cost_categories": {
+      "api_costs": {
+        "openai": {
+          "model": "gpt-4",
+          "estimated_monthly_cost": 80,
+          "optimization_strategies": [
+            {
+              "strategy": "prompt_optimization",
+              "description": "プロンプトの最適化によるトークン数削減",
+              "implementation": {
+                "max_prompt_length": 2000,
+                "use_system_messages": true,
+                "compress_context": true,
+                "remove_redundant_instructions": true
+              },
+              "expected_savings": 25
+            },
+            {
+              "strategy": "batch_processing",
+              "description": "複数の分析を一度に処理",
+              "implementation": {
+                "batch_size": 5,
+                "batch_timeout": 300,
+                "enable_batch_mode": true
+              },
+              "expected_savings": 20
+            },
+            {
+              "strategy": "caching",
+              "description": "類似分析結果のキャッシュ利用",
+              "implementation": {
+                "cache_duration_hours": 24,
+                "similarity_threshold": 0.8,
+                "cache_storage": "local_file",
+                "max_cache_size_mb": 100
+              },
+              "expected_savings": 30
+            },
+            {
+              "strategy": "model_selection",
+              "description": "用途に応じたモデル選択",
+              "implementation": {
+                "simple_analysis": "gpt-3.5-turbo",
+                "complex_analysis": "gpt-4",
+                "draft_generation": "gpt-3.5-turbo",
+                "final_review": "gpt-4"
+              },
+              "expected_savings": 35
+            }
+          ]
+        },
+        "other_apis": {
+          "google_sheets": {
+            "estimated_monthly_cost": 0,
+            "quota_limits": {
+              "reads_per_minute": 100,
+              "writes_per_minute": 100
+            }
+          },
+          "canva": {
+            "estimated_monthly_cost": 15,
+            "optimization_strategies": [
+              {
+                "strategy": "template_reuse",
+                "description": "テンプレートの再利用によるAPI呼び出し削減",
+                "expected_savings": 5
+              }
+            ]
+          }
+        }
+      },
+      "service_costs": {
+        "zapier": {
+          "plan": "professional",
+          "monthly_cost": 20,
+          "task_limit": 50000,
+          "optimization_strategies": [
+            {
+              "strategy": "efficient_triggers",
+              "description": "不要なトリガー実行の削減",
+              "implementation": {
+                "use_filters": true,
+                "batch_updates": true,
+                "scheduled_runs": true
+              },
+              "expected_savings": 5
+            }
+          ]
+        },
+        "cloud_storage": {
+          "provider": "google_drive",
+          "monthly_cost": 5,
+          "optimization_strategies": [
+            {
+              "strategy": "file_lifecycle",
+              "description": "古いファイルの自動削除",
+              "implementation": {
+                "retention_days": 90,
+                "auto_cleanup": true,
+                "compress_old_files": true
+              },
+              "expected_savings": 2
+            }
+          ]
+        }
+      },
+      "infrastructure_costs": {
+        "compute_resources": {
+          "estimated_monthly_cost": 30,
+          "optimization_strategies": [
+            {
+              "strategy": "resource_scaling",
+              "description": "処理量に応じたリソース調整",
+              "implementation": {
+                "auto_scaling": true,
+                "min_instances": 1,
+                "max_instances": 3,
+                "scale_trigger": "cpu_80_percent"
+              },
+              "expected_savings": 15
+            },
+            {
+              "strategy": "processing_optimization",
+              "description": "処理効率の向上",
+              "implementation": {
+                "parallel_processing": true,
+                "memory_optimization": true,
+                "cpu_optimization": true
+              },
+              "expected_savings": 10
+            }
+          ]
+        }
+      }
+    },
+    "cost_monitoring": {
+      "tracking_frequency": "daily",
+      "alert_thresholds": {
+        "daily_limit": 5,
+        "weekly_limit": 30,
+        "monthly_limit": 150
+      },
+      "cost_breakdown_tracking": {
+        "openai_api": {
+          "track_tokens": true,
+          "track_requests": true,
+          "track_models_used": true
+        },
+        "zapier": {
+          "track_task_usage": true,
+          "track_execution_time": true
+        },
+        "storage": {
+          "track_storage_usage": true,
+          "track_bandwidth": true
+        }
+      }
+    },
+    "budget_allocation": {
+      "monthly_budget": 150,
+      "allocation_by_category": {
+        "api_costs": 60,
+        "service_costs": 40,
+        "infrastructure_costs": 30,
+        "contingency": 20
+      },
+      "allocation_by_function": {
+        "data_processing": 45,
+        "ai_analysis": 50,
+        "report_generation": 25,
+        "system_maintenance": 15,
+        "monitoring": 15
+      }
+    },
+    "roi_calculation": {
+      "cost_savings": {
+        "manual_report_time_saved_hours": 36,
+        "hourly_rate": 5000,
+        "monthly_time_savings_value": 180000,
+        "system_monthly_cost": 150,
+        "net_monthly_savings": 179850,
+        "roi_percentage": 119900
+      },
+      "productivity_gains": {
+        "report_frequency_increase": 300,
+        "data_accuracy_improvement": 25,
+        "decision_speed_improvement": 200
+      }
+    },
+    "optimization_schedules": {
+      "daily_optimizations": [
+        {
+          "time": "02:00",
+          "task": "cache_cleanup",
+          "description": "古いキャッシュファイルの削除"
+        },
+        {
+          "time": "03:00",
+          "task": "log_rotation",
+          "description": "ログファイルのローテーション"
+        }
+      ],
+      "weekly_optimizations": [
+        {
+          "day": "sunday",
+          "time": "01:00",
+          "task": "cost_analysis",
+          "description": "週次コスト分析とレポート生成"
+        },
+        {
+          "day": "sunday",
+          "time": "02:00",
+          "task": "performance_tuning",
+          "description": "パフォーマンス最適化の実行"
+        }
+      ],
+      "monthly_optimizations": [
+        {
+          "day": 1,
+          "task": "budget_review",
+          "description": "月次予算レビューと調整"
+        },
+        {
+          "day": 15,
+          "task": "strategy_review",
+          "description": "最適化戦略の効果レビュー"
+        }
+      ]
+    },
+    "cost_alerts": {
+      "email_notifications": {
+        "enabled": true,
+        "recipients": ["admin@company.com", "finance@company.com"],
+        "alert_conditions": [
+          {
+            "condition": "daily_cost_exceeds",
+            "threshold": 5,
+            "severity": "warning"
+          },
+          {
+            "condition": "weekly_cost_exceeds",
+            "threshold": 30,
+            "severity": "critical"
+          },
+          {
+            "condition": "monthly_projection_exceeds",
+            "threshold": 200,
+            "severity": "critical"
+          },
+          {
+            "condition": "unusual_spike",
+            "threshold_multiplier": 3,
+            "severity": "warning"
+          }
+        ]
+      },
+      "slack_notifications": {
+        "enabled": true,
+        "webhook_url": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+        "channel": "#ai-system-alerts"
+      }
+    },
+    "advanced_optimizations": {
+      "ai_model_optimization": {
+        "dynamic_model_selection": {
+          "enabled": true,
+          "rules": [
+            {
+              "condition": "data_size < 1000_rows",
+              "model": "gpt-3.5-turbo",
+              "cost_per_1k_tokens": 0.002
+            },
+            {
+              "condition": "data_size >= 1000_rows AND complexity == 'high'",
+              "model": "gpt-4",
+              "cost_per_1k_tokens": 0.03
+            },
+            {
+              "condition": "analysis_type == 'summary'",
+              "model": "gpt-3.5-turbo",
+              "cost_per_1k_tokens": 0.002
+            }
+          ]
+        },
+        "prompt_engineering": {
+          "templates": {
+            "concise_analysis": {
+              "description": "簡潔な分析用プロンプト",
+              "estimated_tokens": 500,
+              "use_cases": ["daily_reports", "quick_insights"]
+            },
+            "detailed_analysis": {
+              "description": "詳細分析用プロンプト",
+              "estimated_tokens": 1500,
+              "use_cases": ["monthly_reports", "strategic_analysis"]
+            }
+          }
+        }
+      },
+      "data_processing_optimization": {
+        "preprocessing": {
+          "data_compression": true,
+          "duplicate_removal": true,
+          "irrelevant_data_filtering": true
+        },
+        "batch_processing": {
+          "optimal_batch_size": 50,
+          "processing_schedule": "off_peak_hours",
+          "parallel_processing_threads": 4
+        }
+      },
+      "infrastructure_optimization": {
+        "serverless_computing": {
+          "enabled": true,
+          "provider": "aws_lambda",
+          "memory_allocation": "1024mb",
+          "timeout": "900s"
+        },
+        "cdn_usage": {
+          "enabled": true,
+          "provider": "cloudflare",
+          "cache_static_assets": true,
+          "cache_reports": true,
+          "cache_duration": "1h"
+        }
+      }
+    },
+    "cost_forecasting": {
+      "prediction_model": {
+        "type": "linear_regression",
+        "factors": [
+          "monthly_data_volume",
+          "report_frequency",
+          "user_count",
+          "feature_usage"
+        ],
+        "historical_data_months": 6
+      },
+      "growth_projections": {
+        "data_volume_growth": 10,
+        "user_growth": 15,
+        "feature_expansion": 5
+      },
+      "cost_scaling_strategies": [
+        {
+          "trigger": "monthly_cost > 200",
+          "actions": [
+            "enable_aggressive_caching",
+            "increase_batch_sizes",
+            "optimize_api_calls"
+          ]
+        },
+        {
+          "trigger": "monthly_cost > 300",
+          "actions": [
+            "upgrade_to_enterprise_pricing",
+            "implement_custom_ai_models",
+            "negotiate_volume_discounts"
+          ]
+        }
+      ]
+    },
+    "vendor_optimization": {
+      "openai": {
+        "pricing_tiers": {
+          "current_tier": "pay_as_you_go",
+          "evaluation_needed": "enterprise_tier",
+          "volume_threshold": "$1000/month"
+        },
+        "alternatives": [
+          {
+            "provider": "anthropic_claude",
+            "cost_comparison": -20,
+            "quality_comparison": 95
+          }
+        ]
+      },
+      "zapier": {
+        "plan_optimization": {
+          "current_plan": "professional",
+          "usage_analysis": {
+            "tasks_used": 15000,
+            "tasks_limit": 50000,
+            "utilization_rate": 30
+          },
+          "recommendation": "consider_downgrade_if_usage_stable"
+        }
+      }
+    },
+    "reporting": {
+      "cost_dashboard": {
+        "update_frequency": "daily",
+        "metrics": [
+          "daily_cost",
+          "weekly_trend",
+          "monthly_projection",
+          "cost_per_report",
+          "roi_metrics"
+        ],
+        "visualizations": [
+          "cost_trend_chart",
+          "category_breakdown_pie",
+          "budget_vs_actual_bar",
+          "roi_trend_line"
+        ]
+      },
+      "monthly_cost_report": {
+        "recipients": ["management", "finance", "it_admin"],
+        "sections": [
+          "executive_summary",
+          "cost_breakdown",
+          "optimization_achievements",
+          "recommendations",
+          "next_month_forecast"
+        ],
+        "format": ["pdf", "email_summary"]
+      }
+    },
+    "emergency_cost_controls": {
+      "circuit_breakers": [
+        {
+          "trigger": "daily_cost > 10",
+          "action": "pause_non_critical_processes",
+          "notification": "immediate_alert"
+        },
+        {
+          "trigger": "hourly_cost > 2",
+          "action": "rate_limit_api_calls",
+          "notification": "warning_alert"
+        }
+      ],
+      "cost_caps": {
+        "daily_hard_limit": 15,
+        "weekly_hard_limit": 75,
+        "monthly_hard_limit": 300
+      },
+      "fallback_modes": [
+        {
+          "mode": "essential_only",
+          "description": "重要な処理のみ実行",
+          "cost_reduction": 70
+        },
+        {
+          "mode": "basic_analysis",
+          "description": "基本的な分析のみ実行",
+          "cost_reduction": 50
+        }
+      ]
+    }
+  },
+  "implementation_guide": {
+    "setup_steps": [
+      {
+        "step": 1,
+        "title": "コスト監視システムの設定",
+        "tasks": [
+          "コスト追跡データベースの作成",
+          "API使用量監視の実装",
+          "アラート設定の構成"
+        ]
+      },
+      {
+        "step": 2,
+        "title": "最適化戦略の実装",
+        "tasks": [
+          "キャッシュシステムの導入",
+          "バッチ処理の実装",
+          "プロンプト最適化の適用"
+        ]
+      },
+      {
+        "step": 3,
+        "title": "監視・レポートシステムの構築",
+        "tasks": [
+          "ダッシュボードの作成",
+          "自動レポート生成の設定",
+          "アラート通知の設定"
+        ]
+      }
+    ],
+    "maintenance_schedule": {
+      "daily": ["コスト監視", "使用量チェック"],
+      "weekly": ["最適化効果測定", "トレンド分析"],
+      "monthly": ["予算レビュー", "戦略調整"]
+    }
+  }
+}
