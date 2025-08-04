@@ -1,0 +1,132 @@
+{
+  "name": "ai-report-automation-system",
+  "version": "1.0.0",
+  "description": "ノーコード×AIによる完全自動レポート生成システム - 黒瀬理央のAI研究室",
+  "main": "src/generators/report_generator_master.py",
+  "scripts": {
+    "start": "node src/utils/chart_generator.js",
+    "dev": "nodemon src/utils/chart_generator.js",
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "deploy": "node scripts/deploy.js",
+    "setup": "node scripts/setup.js",
+    "docs": "jsdoc src/ -d docs/",
+    "clean": "rimraf dist/ build/ node_modules/.cache/",
+    "webhook:test": "node scripts/test-webhooks.js",
+    "canva:sync": "node src/integrations/canva_integration.js",
+    "charts:generate": "node src/utils/chart_generator.js --batch",
+    "zapier:validate": "node scripts/validate-zapier-config.js"
+  },
+  "keywords": [
+    "ai",
+    "automation",
+    "nocode",
+    "report-generation",
+    "zapier",
+    "canva",
+    "chatgpt",
+    "claude",
+    "business-intelligence",
+    "data-analysis",
+    "workflow-automation"
+  ],
+  "author": {
+    "name": "黒瀬理央",
+    "email": "contact@ai-lab.example.com",
+    "url": "https://youtube.com/@kurose-rio-ai-lab"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kurose-rio/ai-report-automation-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kurose-rio/ai-report-automation-system/issues"
+  },
+  "homepage": "https://github.com/kurose-rio/ai-report-automation-system#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "compression": "^1.7.4",
+    "google-charts": "^2.0.0",
+    "chart.js": "^4.4.0",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "d3": "^7.8.5",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0",
+    "node-cron": "^3.0.3",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.6",
+    "pdf-lib": "^1.17.1",
+    "jsdom": "^23.0.1",
+    "canvas": "^2.11.2",
+    "puppeteer": "^21.5.2",
+    "cheerio": "^1.0.0-rc.12",
+    "form-data": "^4.0.0",
+    "mime-types": "^2.1.35",
+    "validator": "^13.11.0",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "rate-limiter-flexible": "^3.0.8",
+    "node-cache": "^5.1.2",
+    "redis": "^4.6.10",
+    "mongodb": "^6.3.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "babel-loader": "^9.1.3",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "html-webpack-plugin": "^5.5.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "jsdoc": "^4.0.2",
+    "rimraf": "^5.0.5",
+    "@types/node": "^20.9.4",
+    "typescript": "^5.3.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"],
+    "testMatch": ["**/tests/**/*.test.js"],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"]
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "prettier --write"],
+    "*.{json,md}": ["prettier --write"]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  }
+}
