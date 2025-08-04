@@ -1,0 +1,539 @@
+{
+  "templates": {
+    "executive_report": {
+      "name": "エグゼクティブレポート",
+      "description": "経営陣向けの要約レポート",
+      "sections": [
+        {
+          "id": "header",
+          "type": "header",
+          "title": "{{report_title}}",
+          "subtitle": "{{report_period}}",
+          "logo": "{{company_logo}}",
+          "style": {
+            "background_color": "#1E3A8A",
+            "text_color": "#FFFFFF",
+            "font_size": "24px"
+          }
+        },
+        {
+          "id": "executive_summary",
+          "type": "summary_block",
+          "title": "エグゼクティブサマリー",
+          "content": "{{executive_summary}}",
+          "style": {
+            "background_color": "#EFF6FF",
+            "border_left": "4px solid #3B82F6",
+            "padding": "20px",
+            "margin": "20px 0"
+          }
+        },
+        {
+          "id": "key_metrics",
+          "type": "metrics_grid",
+          "title": "主要指標",
+          "metrics": [
+            {
+              "label": "総売上",
+              "value": "{{total_sales}}",
+              "change": "{{sales_change}}",
+              "format": "currency"
+            },
+            {
+              "label": "新規顧客数",
+              "value": "{{new_customers}}",
+              "change": "{{customer_change}}",
+              "format": "number"
+            },
+            {
+              "label": "コンバージョン率",
+              "value": "{{conversion_rate}}",
+              "change": "{{conversion_change}}",
+              "format": "percentage"
+            },
+            {
+              "label": "顧客満足度",
+              "value": "{{satisfaction_score}}",
+              "change": "{{satisfaction_change}}",
+              "format": "score"
+            }
+          ],
+          "style": {
+            "display": "grid",
+            "grid_template_columns": "repeat(auto-fit, minmax(200px, 1fr))",
+            "gap": "20px"
+          }
+        },
+        {
+          "id": "insights",
+          "type": "insight_cards",
+          "title": "主要洞察",
+          "insights": "{{key_insights}}",
+          "max_items": 6,
+          "style": {
+            "card_background": "#FFFFFF",
+            "card_border": "1px solid #E5E7EB",
+            "card_shadow": "0 2px 4px rgba(0,0,0,0.1)"
+          }
+        },
+        {
+          "id": "charts",
+          "type": "chart_section",
+          "title": "データ分析",
+          "charts": "{{charts}}",
+          "layout": "responsive_grid",
+          "style": {
+            "chart_height": "300px",
+            "chart_margin": "20px"
+          }
+        },
+        {
+          "id": "recommendations",
+          "type": "action_list",
+          "title": "推奨アクション",
+          "items": "{{recommendations}}",
+          "priority_indicators": true,
+          "style": {
+            "background_color": "#F0FDF4",
+            "border_left": "4px solid #16A34A",
+            "item_spacing": "10px"
+          }
+        },
+        {
+          "id": "footer",
+          "type": "footer",
+          "content": "生成日時: {{generation_date}} | {{company_name}}",
+          "confidence_score": "{{confidence_score}}",
+          "quality_score": "{{quality_score}}",
+          "style": {
+            "text_align": "center",
+            "font_size": "12px",
+            "color": "#6B7280"
+          }
+        }
+      ]
+    },
+    "sales_dashboard": {
+      "name": "売上ダッシュボード",
+      "description": "売上データに特化したダッシュボード",
+      "sections": [
+        {
+          "id": "header",
+          "type": "dashboard_header",
+          "title": "売上ダッシュボード",
+          "period_selector": true,
+          "refresh_time": "{{last_updated}}",
+          "style": {
+            "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "id": "kpi_overview",
+          "type": "kpi_cards",
+          "cards": [
+            {
+              "title": "今月売上",
+              "value": "{{current_month_sales}}",
+              "comparison": {
+                "period": "前月比",
+                "value": "{{mom_change}}",
+                "type": "percentage"
+              },
+              "trend": "{{sales_trend}}",
+              "color": "#10B981"
+            },
+            {
+              "title": "年累計売上",
+              "value": "{{ytd_sales}}",
+              "comparison": {
+                "period": "前年同期比",
+                "value": "{{yoy_change}}",
+                "type": "percentage"
+              },
+              "trend": "{{ytd_trend}}",
+              "color": "#3B82F6"
+            },
+            {
+              "title": "平均受注額",
+              "value": "{{average_order_value}}",
+              "comparison": {
+                "period": "前期比",
+                "value": "{{aov_change}}",
+                "type": "percentage"
+              },
+              "trend": "{{aov_trend}}",
+              "color": "#8B5CF6"
+            },
+            {
+              "title": "受注件数",
+              "value": "{{order_count}}",
+              "comparison": {
+                "period": "前期比",
+                "value": "{{order_change}}",
+                "type": "number"
+              },
+              "trend": "{{order_trend}}",
+              "color": "#F59E0B"
+            }
+          ]
+        },
+        {
+          "id": "sales_charts",
+          "type": "chart_grid",
+          "layout": "2x2",
+          "charts": [
+            {
+              "type": "line",
+              "title": "月別売上推移",
+              "data": "{{monthly_sales_data}}",
+              "position": "top-left"
+            },
+            {
+              "type": "bar",
+              "title": "商品カテゴリ別売上",
+              "data": "{{category_sales_data}}",
+              "position": "top-right"
+            },
+            {
+              "type": "pie",
+              "title": "地域別売上構成",
+              "data": "{{regional_sales_data}}",
+              "position": "bottom-left"
+            },
+            {
+              "type": "combo",
+              "title": "売上とマージン推移",
+              "data": "{{sales_margin_data}}",
+              "position": "bottom-right"
+            }
+          ]
+        },
+        {
+          "id": "top_performers",
+          "type": "ranking_table",
+          "title": "トップパフォーマー",
+          "columns": ["商品名", "売上", "前期比", "シェア"],
+          "data": "{{top_products}}",
+          "max_rows": 10,
+          "highlight_top": 3
+        }
+      ]
+    },
+    "marketing_report": {
+      "name": "マーケティングレポート",
+      "description": "マーケティング活動の成果レポート",
+      "sections": [
+        {
+          "id": "header",
+          "type": "header",
+          "title": "マーケティング成果レポート",
+          "subtitle": "{{report_period}}",
+          "style": {
+            "background_color": "#EA580C",
+            "text_color": "#FFFFFF"
+          }
+        },
+        {
+          "id": "campaign_overview",
+          "type": "summary_cards",
+          "cards": [
+            {
+              "title": "総広告費",
+              "value": "{{total_ad_spend}}",
+              "format": "currency",
+              "icon": "💰"
+            },
+            {
+              "title": "総ROI",
+              "value": "{{total_roi}}",
+              "format": "percentage",
+              "icon": "📈"
+            },
+            {
+              "title": "新規獲得数",
+              "value": "{{new_acquisitions}}",
+              "format": "number",
+              "icon": "👥"
+            },
+            {
+              "title": "平均CPA",
+              "value": "{{average_cpa}}",
+              "format": "currency",
+              "icon": "🎯"
+            }
+          ]
+        },
+        {
+          "id": "channel_performance",
+          "type": "channel_analysis",
+          "title": "チャネル別パフォーマンス",
+          "channels": "{{marketing_channels}}",
+          "metrics": ["spend", "impressions", "clicks", "conversions", "roi"],
+          "comparison_period": "前期"
+        },
+        {
+          "id": "campaign_details",
+          "type": "campaign_table",
+          "title": "キャンペーン詳細",
+          "campaigns": "{{campaigns}}",
+          "columns": [
+            "キャンペーン名",
+            "チャネル",
+            "予算",
+            "消化額",
+            "CTR",
+            "CVR",
+            "CPA",
+            "ROI"
+          ],
+          "sortable": true,
+          "filterable": true
+        },
+        {
+          "id": "audience_insights",
+          "type": "audience_analysis",
+          "title": "オーディエンス分析",
+          "segments": "{{audience_segments}}",
+          "metrics": ["size", "engagement", "conversion", "ltv"],
+          "visualization": "bubble_chart"
+        }
+      ]
+    },
+    "financial_summary": {
+      "name": "財務サマリー",
+      "description": "財務データの要約レポート",
+      "sections": [
+        {
+          "id": "header",
+          "type": "financial_header",
+          "title": "財務サマリーレポート",
+          "period": "{{fiscal_period}}",
+          "prepared_by": "AI自動レポートシステム",
+          "style": {
+            "background_color": "#1E293B",
+            "text_color": "#FFFFFF",
+            "professional_layout": true
+          }
+        },
+        {
+          "id": "key_financials",
+          "type": "financial_metrics",
+          "metrics": [
+            {
+              "category": "収益性",
+              "items": [
+                {
+                  "label": "売上高",
+                  "value": "{{revenue}}",
+                  "change": "{{revenue_change}}",
+                  "benchmark": "{{revenue_benchmark}}"
+                },
+                {
+                  "label": "営業利益",
+                  "value": "{{operating_profit}}",
+                  "change": "{{profit_change}}",
+                  "benchmark": "{{profit_benchmark}}"
+                },
+                {
+                  "label": "利益率",
+                  "value": "{{profit_margin}}",
+                  "change": "{{margin_change}}",
+                  "benchmark": "{{margin_benchmark}}"
+                }
+              ]
+            },
+            {
+              "category": "効率性",
+              "items": [
+                {
+                  "label": "総資産回転率",
+                  "value": "{{asset_turnover}}",
+                  "change": "{{turnover_change}}",
+                  "benchmark": "{{turnover_benchmark}}"
+                },
+                {
+                  "label": "在庫回転率",
+                  "value": "{{inventory_turnover}}",
+                  "change": "{{inventory_change}}",
+                  "benchmark": "{{inventory_benchmark}}"
+                }
+              ]
+            },
+            {
+              "category": "流動性",
+              "items": [
+                {
+                  "label": "流動比率",
+                  "value": "{{current_ratio}}",
+                  "change": "{{current_change}}",
+                  "benchmark": "{{current_benchmark}}"
+                },
+                {
+                  "label": "キャッシュフロー",
+                  "value": "{{cash_flow}}",
+                  "change": "{{cf_change}}",
+                  "benchmark": "{{cf_benchmark}}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial_charts",
+          "type": "financial_visualization",
+          "charts": [
+            {
+              "type": "waterfall",
+              "title": "損益構造分析",
+              "data": "{{profit_structure}}"
+            },
+            {
+              "type": "trend",
+              "title": "財務指標推移",
+              "data": "{{financial_trends}}"
+            },
+            {
+              "type": "comparison",
+              "title": "業界比較",
+              "data": "{{industry_comparison}}"
+            }
+          ]
+        },
+        {
+          "id": "financial_highlights",
+          "type": "highlight_section",
+          "title": "財務ハイライト",
+          "positive_highlights": "{{positive_points}}",
+          "areas_for_improvement": "{{improvement_areas}}",
+          "style": {
+            "positive_color": "#16A34A",
+            "improvement_color": "#DC2626"
+          }
+        }
+      ]
+    }
+  },
+  "output_formats": {
+    "pdf": {
+      "page_size": "A4",
+      "margins": {
+        "top": "2cm",
+        "bottom": "2cm",
+        "left": "2cm",
+        "right": "2cm"
+      },
+      "fonts": {
+        "primary": "Helvetica",
+        "secondary": "Times-Roman",
+        "japanese": "NotoSansCJK-Regular"
+      },
+      "colors": {
+        "primary": "#1E3A8A",
+        "secondary": "#3B82F6",
+        "accent": "#EFF6FF",
+        "text": "#1F2937",
+        "background": "#FFFFFF"
+      }
+    },
+    "html": {
+      "responsive": true,
+      "css_framework": "custom",
+      "javascript_charts": true,
+      "export_options": {
+        "print_friendly": true,
+        "dark_mode": false
+      },
+      "meta_tags": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "AI生成レポート",
+        "author": "AI Report Generator"
+      }
+    },
+    "excel": {
+      "worksheet_structure": {
+        "summary": "サマリー",
+        "data": "詳細データ",
+        "charts": "グラフ",
+        "raw": "生データ"
+      },
+      "formatting": {
+        "header_style": {
+          "font_bold": true,
+          "background_color": "#1E3A8A",
+          "font_color": "#FFFFFF"
+        },
+        "data_style": {
+          "font_size": 11,
+          "border": "thin"
+        }
+      }
+    },
+    "pptx": {
+      "slide_layouts": {
+        "title": 0,
+        "content": 1,
+        "two_content": 2,
+        "comparison": 3,
+        "blank": 6
+      },
+      "theme": {
+        "primary_color": "#1E3A8A",
+        "accent_color": "#3B82F6",
+        "background_color": "#FFFFFF"
+      },
+      "animations": false,
+      "transitions": "fade"
+    }
+  },
+  "customization_options": {
+    "branding": {
+      "logo_placement": ["header", "footer", "watermark"],
+      "company_colors": {
+        "primary": "{{company_primary_color}}",
+        "secondary": "{{company_secondary_color}}"
+      },
+      "fonts": {
+        "heading": "{{company_heading_font}}",
+        "body": "{{company_body_font}}"
+      }
+    },
+    "content_filters": {
+      "executive_only": {
+        "exclude_sections": ["detailed_data", "technical_appendix"],
+        "summary_length": "short"
+      },
+      "detailed_analysis": {
+        "include_all_sections": true,
+        "summary_length": "long"
+      },
+      "presentation_ready": {
+        "optimize_for": "pptx",
+        "max_text_per_slide": 5,
+        "emphasis_on_visuals": true
+      }
+    },
+    "language_settings": {
+      "primary_language": "ja",
+      "number_format": "japanese",
+      "date_format": "yyyy年mm月dd日",
+      "currency_symbol": "¥"
+    }
+  },
+  "quality_settings": {
+    "image_resolution": {
+      "charts": "300dpi",
+      "logos": "150dpi",
+      "screenshots": "200dpi"
+    },
+    "compression": {
+      "pdf": "medium",
+      "images": "high_quality"
+    },
+    "validation": {
+      "required_sections": ["header", "executive_summary", "footer"],
+      "min_content_length": 100,
+      "max_file_size": "50MB"
+    }
+  }
+}
