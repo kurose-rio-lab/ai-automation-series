@@ -1,0 +1,495 @@
+# =============================================================================
+# AI自動レポート生成システム 運用・収益化版
+# Git除外設定ファイル - セキュリティとクリーンな管理を重視
+# =============================================================================
+
+# =============================================================================
+# 機密情報・APIキー・設定ファイル
+# =============================================================================
+
+# 環境変数ファイル
+.env
+.env.local
+.env.development
+.env.staging  
+.env.production
+.env.test
+.env.backup
+
+# APIキー・認証情報
+*.key
+*.pem
+*.p12
+*.pfx
+api-keys/
+credentials/
+secrets/
+auth/
+tokens/
+
+# 設定ファイル（機密情報含む）
+config/private/
+config/production/
+config/secrets/
+config/api-keys.json
+config/database-credentials.json
+
+# Google Apps Script認証
+.clasp.json
+.clasprc.json
+oauth-credentials.json
+
+# AWS認証
+.aws/
+aws-credentials.json
+
+# SSH Keys
+id_rsa
+id_rsa.pub
+*.ssh
+
+# =============================================================================
+# AI・機械学習関連
+# =============================================================================
+
+# AIモデルファイル
+*.model
+*.pkl
+*.joblib
+*.h5
+*.pb
+models/trained/
+checkpoints/
+
+# AI API レスポンスキャッシュ
+ai_cache/
+response_cache/
+api_responses/
+gpt_cache/
+claude_cache/
+
+# 学習データ・トレーニングセット
+training_data/
+datasets/raw/
+ml_data/
+*.csv
+*.xlsx
+*.json
+!examples/sample_data/
+!templates/data_samples/
+
+# =============================================================================
+# Python環境
+# =============================================================================
+
+# バイトコード
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 配布・ビルド
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 仮想環境
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.python-version
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Python テスト
+.tox/
+.nox/
+.coverage
+.pytest_cache/
+.hypothesis/
+htmlcov/
+
+# =============================================================================
+# Node.js環境
+# =============================================================================
+
+# 依存関係
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ランタイムデータ
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# カバレッジディレクトリ
+coverage/
+*.lcov
+.nyc_output
+
+# ESLint キャッシュ
+.eslintcache
+
+# パッケージャーキャッシュ
+.npm
+.yarn-integrity
+
+# =============================================================================
+# ログファイル・一時ファイル
+# =============================================================================
+
+# ログファイル
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+error.log
+access.log
+combined.log
+
+# 一時ファイル・キャッシュ
+tmp/
+temp/
+.tmp/
+cache/
+.cache/
+.sass-cache/
+
+# システム生成ファイル
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# =============================================================================
+# 開発環境・IDE
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Atom
+.atom/
+
+# Eclipse
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# Vim
+*.swp
+*.swo
+*.un~
+
+# =============================================================================
+# データベース・ストレージ
+# =============================================================================
+
+# データベースファイル
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# MongoDB
+mongod.lock
+dump/
+
+# Redis
+dump.rdb
+appendonly.aof
+
+# =============================================================================
+# 出力・生成ファイル
+# =============================================================================
+
+# レポート出力
+reports/output/
+reports/generated/
+generated_reports/
+exports/
+
+# Canva出力
+canva_exports/
+design_cache/
+generated_designs/
+
+# PDF出力
+*.pdf
+!templates/samples/*.pdf
+!docs/examples/*.pdf
+
+# 画像・メディア出力
+generated_images/
+processed_media/
+output_media/
+
+# データ処理結果
+processed_data/
+cleaned_data/
+analysis_results/
+
+# =============================================================================
+# 監視・運用関連
+# =============================================================================
+
+# ヘルスチェックファイル
+health_check_results/
+monitoring_data/
+metrics/
+
+# バックアップファイル
+*.bak
+*.backup
+backup/
+backups/auto_*
+
+# Webhook ログ
+webhook_logs/
+automation_logs/
+zapier_logs/
+
+# パフォーマンス測定
+performance_logs/
+benchmark_results/
+
+# =============================================================================
+# セキュリティ・監査
+# =============================================================================
+
+# セキュリティスキャン結果
+security_scan_results/
+vulnerability_reports/
+
+# 監査ログ
+audit_logs/
+access_logs/
+security_logs/
+
+# =============================================================================
+# ビジネス・機密文書
+# =============================================================================
+
+# 顧客データ
+customer_data/
+client_information/
+contracts/
+invoices/
+
+# 内部文書
+internal_docs/
+confidential/
+business_plans/private/
+financial_data/private/
+
+# =============================================================================
+# デプロイ・インフラ
+# =============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+.docker/
+
+# Kubernetes
+k8s/secrets/
+k8s/private/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars
+
+# =============================================================================
+# 分析・レポート
+# =============================================================================
+
+# 分析結果
+analytics_results/
+business_intelligence/
+kpi_reports/
+
+# 顧客分析
+customer_analytics/
+usage_analytics/
+revenue_analytics/
+
+# =============================================================================
+# テスト・品質管理
+# =============================================================================
+
+# テスト結果
+test_results/
+test_reports/
+junit.xml
+coverage.xml
+
+# E2Eテスト
+e2e_results/
+screenshots/
+videos/
+
+# ロードテスト
+load_test_results/
+performance_test/
+
+# =============================================================================
+# バージョン管理・リリース
+# =============================================================================
+
+# リリースファイル
+releases/
+archives/
+packages/
+
+# Gitバックアップ
+*.git.bak
+.git.bak/
+
+# =============================================================================
+# 各種言語・フレームワーク固有
+# =============================================================================
+
+# Ruby
+*.gem
+.bundle
+Gemfile.lock
+.rbenv-version
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# C#
+bin/
+obj/
+*.exe
+*.dll
+
+# Go
+*.exe~
+vendor/
+
+# Rust
+target/
+Cargo.lock
+
+# =============================================================================
+# 特殊なケース・将来の拡張
+# =============================================================================
+
+# マイクロサービス関連
+services/*/logs/
+services/*/cache/
+services/*/temp/
+
+# API Gateway
+gateway_logs/
+rate_limit_logs/
+
+# メッセージキュー
+queue_data/
+message_logs/
+
+# AI/ML パイプライン
+pipeline_cache/
+model_artifacts/
+experiment_logs/
+
+# ブロックチェーン（将来対応）
+blockchain_data/
+wallet_data/
+
+# IoT データ（将来対応）
+sensor_data/
+device_logs/
+
+# =============================================================================
+# プロジェクト固有の除外項目
+# =============================================================================
+
+# プロジェクト特有の一時ファイル
+project_temp/
+dev_notes/
+personal_notes.md
+todo.txt
+scratch/
+
+# 外部ツール連携
+external_tools/cache/
+third_party_data/
+
+# ローカル実験
+experiments/
+prototypes/
+spike/
+
+# =============================================================================
+# 注意事項
+# =============================================================================
+
+# 以下のファイルは意図的に除外しています：
+# - 実際のAPIキー・認証情報
+# - 顧客データ・機密情報
+# - 大容量の生成ファイル
+# - 個人的なメモ・開発ファイル
+# 
+# サンプルファイルやテンプレートは保持されます：
+# - examples/ 以下のサンプルファイル
+# - templates/ 以下のテンプレート
+# - docs/ 以下のドキュメント
+#
+# セキュリティを最優先に設定しており、
+# 機密情報の漏洩を防ぐため広範囲に除外設定をしています。
