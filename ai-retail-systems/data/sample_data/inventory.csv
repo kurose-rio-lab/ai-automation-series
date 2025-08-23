@@ -1,0 +1,11 @@
+product_id,current_stock,min_stock,max_stock,warehouse_location,last_updated
+P001,45,10,100,WH_Tokyo,2023-10-08
+P002,78,20,150,WH_Osaka,2023-10-08
+P003,123,30,200,WH_Tokyo,2023-10-08
+P004,56,15,120,WH_Nagoya,2023-10-08
+P005,34,10,80,WH_Tokyo,2023-10-08
+P006,23,5,60,WH_Osaka,2023-10-08
+P007,89,25,180,WH_Tokyo,2023-10-08
+P008,67,15,100,WH_Nagoya,2023-10-08
+P009,41,10,90,WH_Tokyo,2023-10-08
+P010,18,8,50,WH_Osaka,2023-10-08
