@@ -1,0 +1,16 @@
+customer_id,age,gender,location,registration_date,total_purchases,preferred_category
+C001,28,M,東京,2023-01-15,282800,Electronics
+C002,34,F,大阪,2023-02-20,79600,Electronics
+C003,22,F,名古屋,2023-03-10,11960,Fashion
+C004,45,M,福岡,2023-01-25,148000,Electronics
+C005,31,F,札幌,2023-04-05,31600,Home
+C006,26,M,仙台,2023-02-14,25960,Fashion
+C007,39,F,広島,2023-03-22,17960,Fashion
+C008,33,M,京都,2023-01-30,52800,Electronics
+C009,42,F,神戸,2023-02-28,89800,Home
+C010,29,M,横浜,2023-03-18,79600,Electronics
+C011,36,F,千葉,2023-04-12,19800,Home
+C012,24,F,埼玉,2023-02-08,17940,Fashion
+C013,38,M,静岡,2023-01-20,148000,Electronics
+C014,27,M,岡山,2023-03-25,12980,Fashion
+C015,41,F,熊本,2023-04-18,0,Home
