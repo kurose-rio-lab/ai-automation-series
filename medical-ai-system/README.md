@@ -27,7 +27,7 @@
 ### インストール手順
 
 1. **リポジトリのクローン**
-```bash
+
 git clone https://github.com/kurose-ai/medical-ai-system.git
 cd medical-ai-system
 
