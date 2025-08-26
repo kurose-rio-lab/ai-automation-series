@@ -1,0 +1,55 @@
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+scipy>=1.10.0
+
+# Web framework
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+
+# Data processing
+python-dateutil>=2.8.0
+pytz>=2023.3
+
+# Machine learning extensions
+joblib>=1.3.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Data validation
+marshmallow>=3.20.0
+cerberus>=1.3.4
+
+# Logging and monitoring
+loguru>=0.7.0
+
+# Documentation
+sphinx>=7.1.0
+sphinx-rtd-theme>=1.3.0
+
+# Code quality
+black>=23.7.0
+flake8>=6.0.0
+isort>=5.12.0
+
+# Optional: For advanced features
+# tensorflow>=2.13.0  # Uncomment for deep learning features
+# torch>=2.0.0        # Uncomment for PyTorch features
+# matplotlib>=3.7.0   # Uncomment for visualization
+# seaborn>=0.12.0     # Uncomment for advanced plotting
+
+# Database (optional)
+sqlite3  # Built-in with Python
+# psycopg2-binary>=2.9.0  # Uncomment for PostgreSQL support
+# PyMySQL>=1.1.0          # Uncomment for MySQL support
+
+# Security
+cryptography>=41.0.0
+bcrypt>=4.0.0
+
+# Performance optimization
+numba>=0.57.0  # Optional: for numerical computation acceleration
