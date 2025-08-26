@@ -1,0 +1,431 @@
+{
+  "diseases": {
+    "common_cold": {
+      "name_jp": "風邪",
+      "category": "respiratory_infection",
+      "severity": "mild",
+      "typical_symptoms": [
+        {"symptom": "runny_nose", "frequency": 0.9, "severity": "mild"},
+        {"symptom": "cough", "frequency": 0.8, "severity": "mild"},
+        {"symptom": "sore_throat", "frequency": 0.7, "severity": "mild"},
+        {"symptom": "fatigue", "frequency": 0.6, "severity": "mild"},
+        {"symptom": "headache", "frequency": 0.4, "severity": "mild"},
+        {"symptom": "fever", "frequency": 0.3, "severity": "mild"}
+      ],
+      "typical_duration": 7,
+      "contagious": true,
+      "transmission": "airborne_droplets",
+      "risk_factors": [
+        "cold_weather",
+        "stress",
+        "lack_of_sleep",
+        "close_contact_with_infected"
+      ],
+      "complications": ["sinusitis", "ear_infection", "bronchitis"],
+      "differential_diagnosis": ["influenza", "allergic_rhinitis", "sinusitis"]
+    },
+    "influenza": {
+      "name_jp": "インフルエンザ",
+      "category": "viral_infection",
+      "severity": "moderate",
+      "typical_symptoms": [
+        {"symptom": "fever", "frequency": 0.95, "severity": "high"},
+        {"symptom": "muscle_aches", "frequency": 0.9, "severity": "moderate"},
+        {"symptom": "headache", "frequency": 0.85, "severity": "moderate"},
+        {"symptom": "fatigue", "frequency": 0.9, "severity": "high"},
+        {"symptom": "cough", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "sore_throat", "frequency": 0.6, "severity": "moderate"},
+        {"symptom": "chills", "frequency": 0.8, "severity": "moderate"}
+      ],
+      "typical_duration": 10,
+      "contagious": true,
+      "transmission": "airborne_droplets",
+      "seasonal_pattern": "winter_peak",
+      "risk_factors": [
+        "age_over_65",
+        "age_under_5",
+        "pregnancy",
+        "chronic_diseases",
+        "immunocompromised"
+      ],
+      "complications": [
+        "pneumonia",
+        "myocarditis",
+        "encephalitis",
+        "secondary_bacterial_infection"
+      ],
+      "differential_diagnosis": ["common_cold", "pneumonia", "covid19"]
+    },
+    "pneumonia": {
+      "name_jp": "肺炎",
+      "category": "respiratory_infection",
+      "severity": "severe",
+      "typical_symptoms": [
+        {"symptom": "cough", "frequency": 0.95, "severity": "high"},
+        {"symptom": "fever", "frequency": 0.9, "severity": "high"},
+        {"symptom": "shortness_of_breath", "frequency": 0.8, "severity": "high"},
+        {"symptom": "chest_pain", "frequency": 0.7, "severity": "moderate"},
+        {"symptom": "fatigue", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "chills", "frequency": 0.6, "severity": "moderate"}
+      ],
+      "typical_duration": 14,
+      "contagious": false,
+      "risk_factors": [
+        "age_over_65",
+        "smoking",
+        "chronic_lung_disease",
+        "immunocompromised",
+        "heart_disease",
+        "diabetes"
+      ],
+      "complications": [
+        "respiratory_failure",
+        "sepsis",
+        "lung_abscess",
+        "pleural_effusion"
+      ],
+      "differential_diagnosis": [
+        "bronchitis",
+        "lung_cancer",
+        "pulmonary_embolism",
+        "heart_failure"
+      ]
+    },
+    "bronchitis": {
+      "name_jp": "気管支炎",
+      "category": "respiratory_infection",
+      "severity": "mild_to_moderate",
+      "typical_symptoms": [
+        {"symptom": "cough", "frequency": 0.98, "severity": "high"},
+        {"symptom": "sputum_production", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "fatigue", "frequency": 0.6, "severity": "mild"},
+        {"symptom": "chest_discomfort", "frequency": 0.5, "severity": "mild"},
+        {"symptom": "fever", "frequency": 0.3, "severity": "mild"}
+      ],
+      "typical_duration": 10,
+      "contagious": true,
+      "risk_factors": ["smoking", "air_pollution", "frequent_respiratory_infections"],
+      "complications": ["pneumonia", "chronic_bronchitis"],
+      "differential_diagnosis": ["pneumonia", "asthma", "whooping_cough"]
+    },
+    "hypertension": {
+      "name_jp": "高血圧",
+      "category": "cardiovascular",
+      "severity": "moderate",
+      "typical_symptoms": [
+        {"symptom": "headache", "frequency": 0.4, "severity": "mild"},
+        {"symptom": "dizziness", "frequency": 0.3, "severity": "mild"},
+        {"symptom": "blurred_vision", "frequency": 0.2, "severity": "mild"},
+        {"symptom": "chest_pain", "frequency": 0.2, "severity": "moderate"}
+      ],
+      "chronic_condition": true,
+      "risk_factors": [
+        "age",
+        "obesity",
+        "smoking",
+        "high_sodium_diet",
+        "lack_of_exercise",
+        "stress",
+        "family_history"
+      ],
+      "complications": [
+        "stroke",
+        "heart_attack",
+        "heart_failure",
+        "kidney_disease",
+        "retinopathy"
+      ],
+      "target_values": {
+        "blood_pressure_systolic": {"target": "<130", "unit": "mmHg"},
+        "blood_pressure_diastolic": {"target": "<80", "unit": "mmHg"}
+      }
+    },
+    "diabetes": {
+      "name_jp": "糖尿病",
+      "category": "endocrine",
+      "severity": "moderate_to_severe",
+      "typical_symptoms": [
+        {"symptom": "increased_thirst", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "frequent_urination", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "unexplained_weight_loss", "frequency": 0.6, "severity": "moderate"},
+        {"symptom": "fatigue", "frequency": 0.7, "severity": "moderate"},
+        {"symptom": "blurred_vision", "frequency": 0.5, "severity": "mild"},
+        {"symptom": "slow_healing_wounds", "frequency": 0.4, "severity": "moderate"}
+      ],
+      "chronic_condition": true,
+      "risk_factors": [
+        "obesity",
+        "family_history",
+        "age_over_45",
+        "sedentary_lifestyle",
+        "high_blood_pressure",
+        "gestational_diabetes_history"
+      ],
+      "complications": [
+        "diabetic_retinopathy",
+        "diabetic_nephropathy",
+        "diabetic_neuropathy",
+        "cardiovascular_disease",
+        "diabetic_ketoacidosis"
+      ],
+      "target_values": {
+        "blood_glucose_fasting": {"target": "80-130", "unit": "mg/dL"},
+        "blood_glucose_postprandial": {"target": "<180", "unit": "mg/dL"},
+        "hba1c": {"target": "<7.0", "unit": "%"}
+      }
+    },
+    "migraine": {
+      "name_jp": "偏頭痛",
+      "category": "neurological",
+      "severity": "moderate_to_severe",
+      "typical_symptoms": [
+        {"symptom": "headache", "frequency": 1.0, "severity": "severe"},
+        {"symptom": "nausea", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "vomiting", "frequency": 0.4, "severity": "moderate"},
+        {"symptom": "light_sensitivity", "frequency": 0.9, "severity": "moderate"},
+        {"symptom": "sound_sensitivity", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "visual_aura", "frequency": 0.3, "severity": "mild"}
+      ],
+      "typical_duration": 24,
+      "episodic": true,
+      "triggers": [
+        "stress",
+        "hormonal_changes",
+        "certain_foods",
+        "sleep_changes",
+        "weather_changes",
+        "bright_lights",
+        "strong_odors"
+      ],
+      "risk_factors": ["female_gender", "family_history", "age_20_50"],
+      "differential_diagnosis": [
+        "tension_headache",
+        "cluster_headache",
+        "medication_overuse_headache",
+        "brain_tumor"
+      ]
+    },
+    "gastroenteritis": {
+      "name_jp": "胃腸炎",
+      "category": "gastrointestinal",
+      "severity": "mild_to_moderate",
+      "typical_symptoms": [
+        {"symptom": "diarrhea", "frequency": 0.95, "severity": "moderate"},
+        {"symptom": "nausea", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "vomiting", "frequency": 0.7, "severity": "moderate"},
+        {"symptom": "abdominal_cramps", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "fever", "frequency": 0.6, "severity": "mild"},
+        {"symptom": "dehydration", "frequency": 0.4, "severity": "moderate"}
+      ],
+      "typical_duration": 5,
+      "contagious": true,
+      "causes": ["viral", "bacterial", "food_poisoning", "contaminated_water"],
+      "risk_factors": [
+        "poor_hygiene",
+        "contaminated_food_water",
+        "close_contact_with_infected",
+        "immunocompromised"
+      ],
+      "complications": ["dehydration", "electrolyte_imbalance", "kidney_failure"],
+      "differential_diagnosis": [
+        "food_poisoning",
+        "inflammatory_bowel_disease",
+        "appendicitis",
+        "irritable_bowel_syndrome"
+      ]
+    },
+    "asthma": {
+      "name_jp": "喘息",
+      "category": "respiratory_chronic",
+      "severity": "mild_to_severe",
+      "typical_symptoms": [
+        {"symptom": "wheezing", "frequency": 0.9, "severity": "moderate"},
+        {"symptom": "shortness_of_breath", "frequency": 0.95, "severity": "moderate"},
+        {"symptom": "cough", "frequency": 0.8, "severity": "moderate"},
+        {"symptom": "chest_tightness", "frequency": 0.85, "severity": "moderate"}
+      ],
+      "chronic_condition": true,
+      "episodic": true,
+      "triggers": [
+        "allergens",
+        "exercise",
+        "cold_air",
+        "respiratory_infections",
+        "stress",
+        "air_pollution"
+      ],
+      "risk_factors": [
+        "family_history",
+        "allergies",
+        "eczema",
+        "exposure_to_smoke",
+        "premature_birth"
+      ],
+      "complications": [
+        "status_asthmaticus",
+        "pneumonia",
+        "atelectasis",
+        "respiratory_failure"
+      ]
+    }
+  },
+  "symptom_definitions": {
+    "fever": {
+      "name_jp": "発熱",
+      "definition": "体温が37.5°C以上の状態",
+      "measurement": "body_temperature",
+      "normal_range": "36.1-37.2°C",
+      "severity_ranges": {
+        "mild": "37.5-38.0°C",
+        "moderate": "38.1-39.0°C",
+        "severe": "39.1°C以上"
+      }
+    },
+    "cough": {
+      "name_jp": "咳",
+      "definition": "気道の刺激により起こる反射的な呼気",
+      "types": ["dry_cough", "productive_cough", "chronic_cough"],
+      "duration_classification": {
+        "acute": "< 3週間",
+        "subacute": "3-8週間", 
+        "chronic": "> 8週間"
+      }
+    },
+    "headache": {
+      "name_jp": "頭痛",
+      "definition": "頭部に感じる痛み",
+      "types": ["tension_type", "migraine_type", "cluster_type", "secondary"],
+      "severity_scale": {
+        "mild": "1-3/10",
+        "moderate": "4-6/10",
+        "severe": "7-10/10"
+      }
+    },
+    "fatigue": {
+      "name_jp": "疲労感",
+      "definition": "身体的・精神的な疲れや倦怠感",
+      "assessment": "patient_reported_scale_1_10"
+    },
+    "shortness_of_breath": {
+      "name_jp": "呼吸困難",
+      "definition": "呼吸が困難または不快に感じる状態",
+      "assessment": "dyspnea_scale",
+      "emergency_signs": [
+        "rest_dyspnea",
+        "unable_to_speak_in_sentences",
+        "cyanosis"
+      ]
+    },
+    "chest_pain": {
+      "name_jp": "胸痛",
+      "definition": "胸部に感じる痛みや不快感",
+      "types": ["cardiac", "pulmonary", "musculoskeletal", "gastrointestinal"],
+      "red_flags": [
+        "crushing_pain",
+        "radiation_to_arm_jaw",
+        "associated_with_dyspnea",
+        "diaphoresis"
+      ]
+    },
+    "nausea": {
+      "name_jp": "悪心",
+      "definition": "嘔吐の前兆として感じる不快感",
+      "associated_symptoms": ["vomiting", "dizziness", "cold_sweats"]
+    },
+    "dizziness": {
+      "name_jp": "めまい",
+      "definition": "平衡感覚の障害や回転感",
+      "types": ["vertigo", "lightheadedness", "disequilibrium", "presyncope"]
+    }
+  },
+  "clinical_guidelines": {
+    "emergency_symptoms": [
+      {
+        "symptom": "chest_pain",
+        "criteria": "sudden_onset_severe_pain_with_dyspnea",
+        "action": "immediate_emergency_care"
+      },
+      {
+        "symptom": "shortness_of_breath",
+        "criteria": "rest_dyspnea_with_cyanosis",
+        "action": "immediate_oxygen_and_emergency_care"
+      },
+      {
+        "symptom": "altered_consciousness",
+        "criteria": "confusion_or_loss_of_consciousness", 
+        "action": "immediate_neurological_assessment"
+      },
+      {
+        "symptom": "severe_headache",
+        "criteria": "worst_headache_of_life_with_neurological_signs",
+        "action": "immediate_neuroimaging_and_neurology_consult"
+      }
+    ],
+    "age_specific_considerations": {
+      "pediatric": {
+        "age_range": "0-18",
+        "specific_symptoms": ["fever_without_source", "feeding_difficulties", "irritability"],
+        "normal_vital_ranges": {
+          "heart_rate": {"0-1_month": "80-160", "1-12_months": "75-130"},
+          "respiratory_rate": {"0-1_month": "25-50", "1-12_months": "20-30"}
+        }
+      },
+      "geriatric": {
+        "age_range": "65+",
+        "considerations": [
+          "atypical_presentations_common",
+          "multiple_comorbidities",
+          "polypharmacy_interactions",
+          "functional_decline_risk"
+        ]
+      }
+    },
+    "comorbidity_interactions": {
+      "diabetes_hypertension": {
+        "combined_risks": ["cardiovascular_disease", "kidney_disease", "stroke"],
+        "monitoring_priorities": ["blood_pressure", "blood_glucose", "kidney_function"]
+      },
+      "copd_heart_disease": {
+        "combined_risks": ["respiratory_failure", "right_heart_failure"],
+        "monitoring_priorities": ["oxygen_saturation", "exercise_tolerance", "fluid_status"]
+      }
+    }
+  },
+  "medication_database": {
+    "common_medications": {
+      "metformin": {
+        "category": "antidiabetic",
+        "indications": ["type_2_diabetes", "prediabetes", "pcos"],
+        "contraindications": ["kidney_disease", "liver_disease", "heart_failure"],
+        "side_effects": ["gastrointestinal_upset", "lactic_acidosis_rare"],
+        "monitoring": ["kidney_function", "vitamin_b12", "lactic_acid"]
+      },
+      "lisinopril": {
+        "category": "ace_inhibitor",
+        "indications": ["hypertension", "heart_failure", "diabetic_nephropathy"],
+        "contraindications": ["pregnancy", "angioedema_history", "bilateral_renal_artery_stenosis"],
+        "side_effects": ["dry_cough", "hyperkalemia", "angioedema"],
+        "monitoring": ["blood_pressure", "kidney_function", "potassium"]
+      },
+      "salbutamol": {
+        "category": "bronchodilator",
+        "indications": ["asthma", "copd", "bronchospasm"],
+        "contraindications": ["hypersensitivity"],
+        "side_effects": ["tremor", "palpitations", "headache"],
+        "monitoring": ["heart_rate", "blood_pressure", "potassium"]
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2024-01-15",
+    "data_sources": [
+      "ICD-11",
+      "medical_literature_2023",
+      "clinical_practice_guidelines",
+      "expert_consensus"
+    ],
+    "validation_status": "peer_reviewed",
+    "accuracy_note": "教育・研究目的。実際の診療では医師の判断を優先してください。"
+  }
+}
