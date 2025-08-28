@@ -1,0 +1,40 @@
+# 金融・保険業界向けAIシステム 必要パッケージ一覧
+
+# 基本的なデータ分析・科学計算ライブラリ
+pandas>=1.5.0
+numpy>=1.21.0
+scipy>=1.9.0
+
+# 機械学習ライブラリ
+scikit-learn>=1.1.0
+
+# データ可視化ライブラリ
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.10.0
+
+# 統計・数値計算ライブラリ
+statsmodels>=0.13.0
+
+# 日付・時刻処理
+python-dateutil>=2.8.0
+
+# 設定ファイル・JSON処理
+pyyaml>=6.0
+requests>=2.28.0
+
+# Jupyter notebook関連（開発・分析用）
+jupyter>=1.0.0
+ipython>=8.0.0
+notebook>=6.4.0
+
+# テスト・開発用
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+
+# 警告の抑制用
+warnings
+
+# 標準ライブラリ（明示的記載）
+# datetime, json, warnings は標準ライブラリのため不要
