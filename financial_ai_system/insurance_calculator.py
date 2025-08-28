@@ -454,4 +454,111 @@ class InsuranceCalculator:
                 'total_premium': premium_result['total'],
                 'individual_premiums': {
                     k: v for k, v in premium_result.items() 
-                    if k not in 
+                                        if k not in ['total', 'risk_analysis', 'applied_discounts', 'recommendations', 'calculation_timestamp']
+                },
+                'risk_score': premium_result['risk_analysis']['total_risk'],
+                'discounts': premium_result['applied_discounts'],
+                'plan_features': plan.get('features', []),
+                'cost_benefit_ratio': self.calculate_cost_benefit_ratio(premium_result, plan)
+            }
+            
+            comparison_results.append(plan_result)
+        
+        # 最適プランの推奨
+        recommended_plan = min(comparison_results, key=lambda x: x['cost_benefit_ratio'])
+        
+        print("✅ 保険プラン比較完了")
+        return {
+            'comparison_results': comparison_results,
+            'recommended_plan': recommended_plan,
+            'comparison_timestamp': datetime.now().isoformat()
+        }
+    
+    def calculate_cost_benefit_ratio(self, premium_result, plan):
+        """
+        コストベネフィット比の計算
+        """
+        total_premium = premium_result['total']
+        coverage_score = plan.get('coverage_score', 50)  # 保障スコア（0-100）
+        
+        # 保険料が安く、保障が充実しているほど良い
+        cost_benefit = total_premium / (coverage_score + 1)
+        
+        return cost_benefit
+
+# テスト実行用の関数
+def test_insurance_calculator():
+    """
+    保険料計算エンジンのテスト実行
+    """
+    print("🧪 保険料計算エンジンのテストを開始...")
+    
+    # エンジンの初期化
+    calculator = InsuranceCalculator()
+    
+    # テスト用の顧客データ
+    test_customers = [
+        {
+            'customer_id': 'TEST_001',
+            'age': 30,
+            'gender': '男性',
+            'occupation': '会社員',
+            'health_status': '良好',
+            'lifestyle': ['運動習慣', '健康管理'],
+            'region': '東京',
+            'income': 6000000,
+            'driving_years': 10,
+            'accident_count': 0
+        },
+        {
+            'customer_id': 'TEST_002',
+            'age': 45,
+            'gender': '女性',
+            'occupation': '医師',
+            'health_status': '非常に良好',
+            'lifestyle': ['適量飲酒', '運動習慣'],
+            'region': '大阪',
+            'income': 12000000,
+            'driving_years': 20,
+            'accident_count': 0
+        },
+        {
+            'customer_id': 'TEST_003', 
+            'age': 55,
+            'gender': '男性',
+            'occupation': '自営業',
+            'health_status': 'やや不安',
+            'lifestyle': ['喫煙', '不規則生活'],
+            'region': '愛知',
+            'income': 4000000,
+            'driving_years': 25,
+            'accident_count': 2
+        }
+    ]
+    
+    # 各顧客の保険料計算
+    for customer in test_customers:
+        print(f"\n--- {customer['customer_id']} の保険料計算 ---")
+        print(f"年齢: {customer['age']}歳, 職業: {customer['occupation']}")
+        
+        result = calculator.calculate_premium(customer)
+        
+        print(f"年間保険料合計: {result['total']:,}円")
+        print("内訳:")
+        for insurance_type, premium in result.items():
+            if insurance_type not in ['total', 'risk_analysis', 'applied_discounts', 'recommendations', 'calculation_timestamp']:
+                print(f"  {insurance_type}: {premium:,}円")
+        
+        print("適用割引:")
+        for discount_type, rate in result['applied_discounts'].items():
+            print(f"  {discount_type}: {rate:.1%}")
+        
+        print("推奨事項:")
+        for rec in result['recommendations']:
+            print(f"  - {rec}")
+    
+    print("\n✅ 保険料計算エンジンのテスト完了")
+
+if __name__ == "__main__":
+    test_insurance_calculator()
+
